@@ -1,16 +1,16 @@
-<h1>Hello</h1>
+<h1>Add Todo</h1>
 <%= form_with scope: :todo, url: todos_path, local: true do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+  <div class="form-group">
+    <%= form.label :title, for:"inputTitle" %><br>
+    <%= form.text_field :title, type:"email", class:"form-control", id:"inputTitle" %>
+  </div>
 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+  <div class="form-group">
+    <%= form.label :description, for:"inputDescription" %><br>
+    <%= form.text_area :description, rows:"3", class:"form-control", id:"inputDescription" %>
+  </div>
 
-  <p>
-    <%= form.submit class:"btn-danger" %>
-  </p>
+  <div class="form-group">
+    <%= form.submit class:"btn-secondary" %>
+  </div>
 <% end %>

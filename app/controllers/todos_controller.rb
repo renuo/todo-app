@@ -1,13 +1,17 @@
 class TodosController < ApplicationController
+  add_breadcrumb "Home&nbsp;".html_safe, :todos_path
+
   def index
     @todo = Todo.all
   end
 
   def show
     @todo = Todo.find(params[:id])
+    add_breadcrumb "Description".html_safe, :todo_path
   end
 
   def new
+    add_breadcrumb "Add Todo".html_safe, :new_todo_path
   end
 
   def create

@@ -23,6 +23,9 @@
   </div>
 </nav>
 <div class="container">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs :separator => " / " %>
+  </ol>
   <%= yield %>
 </div>
 </body>

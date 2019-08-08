@@ -7,11 +7,11 @@ class TodosController < ApplicationController
 
   def show
     @todo = Todo.find(params[:id])
-    add_breadcrumb "Description".html_safe, :todo_path
+    add_breadcrumb "Description", :todo_path
   end
 
   def new
-    add_breadcrumb "Add Todo".html_safe, :new_todo_path
+    add_breadcrumb "Add Todo", :new_todo_path
   end
 
   def create

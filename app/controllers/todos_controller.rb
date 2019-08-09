@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   add_breadcrumb "Home&nbsp;".html_safe, :todos_path
 
   def index
-    @todo = Todo.all
+    @todos = Todo.all
   end
 
   def show
@@ -15,6 +15,11 @@ class TodosController < ApplicationController
     add_breadcrumb "Add Todo", :new_todo_path
   end
 
+  def edit
+    @todo = Todo.find(params[:id])
+    add_breadcrumb "Edit Todo", :edit_todo_path
+  end
+
   def create
     @todo = Todo.new(todo_params)
 
@@ -22,6 +27,16 @@ class TodosController < ApplicationController
       redirect_to @todo
     else
       render 'new'
+    end
+  end
+
+  def update
+    @todo = Todo.find(params[:id])
+
+    if @todo.update(todo_params)
+      redirect_to @todo
+    else
+      render 'edit'
     end
   end
 

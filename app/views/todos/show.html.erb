@@ -1,3 +1,4 @@
 <h1><%= @todo.title %></h1>
 <h5 class="text-muted">Description:</h5>
 <p class="lead"> <%= @todo.description %> </p>
+<button class="btn btn-outline-dark" onclick="location.href='<%= edit_todo_path(@todo) %>'">Edit</button>

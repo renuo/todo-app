@@ -2,13 +2,26 @@
 <table class="table table-hover" id="listTodos">
   <tbody>
   <% @todos.each do |todo| %>
-  <tr>
-    <td class="showTodo" onclick="location.href='<%= todo_path(todo) %>'"><%= todo.title %></td>
-    <td><button class="btn btn-outline-dark btn-sm" id="editButton" onclick="location.href='<%= edit_todo_path(todo) %>'">Edit</button></td>
-  </tr>
+    <tr>
+      <td scope="row">
+        <div class="custom-control custom-checkbox">
+          <%= link_to todo_path(todo),
+                      method: :delete do %>
+            <input type="checkbox" class="custom-control-input" id="<%= todo.title %>">
+            <label class="custom-control-label" for="<%= todo.title %>"></label>
+          <% end %>
+        </div>
+      </td>
+      <td class="showTodo" onclick="location.href='<%= todo_path(todo) %>'"><%= todo.title %></td>
+      <td>
+        <button class="btn btn-outline-dark btn-sm" id="editButton" onclick="location.href='<%= edit_todo_path(todo) %>'">Edit</button>
+      </td>
+    </tr>
   <% end %>
   <tr class="addTodo">
-    <td colspan="2" onclick="location.href=' <%= new_todo_path %> '"><i class="fas fa-plus-circle" id="addIcon"></i>New todo</td>
+    <td colspan="3" onclick="location.href=' <%= new_todo_path %> '"><i class="fas fa-plus-circle" id="addIcon"></i>New
+      todo
+    </td>
   </tr>
   </tbody>
 </table>

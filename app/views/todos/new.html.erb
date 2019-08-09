@@ -11,6 +11,18 @@
     <%= form.text_area :description, rows:"3", class:"form-control", id:"inputDescription" %>
   </div>
 
+  <% if @todo.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <%= pluralize(@todo.errors.count, "error") %> prohibited
+      this todo from being saved:
+      <ul>
+        <% @todo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= form.submit class:"btn btn-secondary", value:"Add" %>
   </div>

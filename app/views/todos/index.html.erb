@@ -1,1 +1,13 @@
-<h1>Todo</h1>
+<h1>Todos</h1>
+<table class="table table-hover" id="listTodos">
+  <tbody>
+  <% @todo.each do |todo| %>
+  <tr onclick="location.href='<%= todo_path(todo) %>'">
+    <td><%= todo.title %></td>
+  </tr>
+  <% end %>
+  <tr class="addTodo">
+    <td onclick="location.href=' <%= new_todo_path %> '"><i class="fas fa-plus-circle" id="addIcon"></i>New todo</td>
+  </tr>
+  </tbody>
+</table>

@@ -3,11 +3,12 @@
   <tbody>
   <% @todo.each do |todo| %>
   <tr onclick="location.href='<%= todo_path(todo) %>'">
-    <td><%= todo.title %></td>
+    <td class="showTodo"><%= todo.title %></td>
+    <td>dad</td>
   </tr>
   <% end %>
   <tr class="addTodo">
-    <td onclick="location.href=' <%= new_todo_path %> '"><i class="fas fa-plus-circle" id="addIcon"></i>New todo</td>
+    <td colspan="2" onclick="location.href=' <%= new_todo_path %> '"><i class="fas fa-plus-circle" id="addIcon"></i>New todo</td>
   </tr>
   </tbody>
 </table>

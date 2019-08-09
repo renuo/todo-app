@@ -4,13 +4,10 @@
   <% @todos.each do |todo| %>
     <tr>
       <td scope="row">
-        <div class="custom-control custom-checkbox">
           <%= link_to todo_path(todo),
                       method: :delete do %>
-            <input type="checkbox" class="custom-control-input" id="<%= todo.title %>">
-            <label class="custom-control-label" for="<%= todo.title %>"></label>
+          <button type="button" class="btn btn-link"><i class="fas fa-window-close"></i></button>
           <% end %>
-        </div>
       </td>
       <td class="showTodo" onclick="location.href='<%= todo_path(todo) %>'"><%= todo.title %></td>
       <td>

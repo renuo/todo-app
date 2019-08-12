@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    add_breadcrumb " Profile", :new_user_path
   end
 
   def new
     @user = User.new
-    add_breadcrumb " Signup", :new_user_path
+    add_breadcrumb " Sign up", :new_user_path
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = "Welcome to the Todo-App!"
-      redirect_to @user
+      redirect_to todos_path
     else
       render 'new'
     end

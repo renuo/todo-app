@@ -13,18 +13,27 @@
 <body>
 <nav class="navbar navbar-light">
   <a class="navbar-brand" href="#">Todo</a>
-  <form class="form-inline">
-    <div class="navbar-text"><i class="far fa-user"></i>Profile name</div>
-  </form>
-</nav>
-<div class="container">
-  <ol class="breadcrumb">
-    <%= render_breadcrumbs :separator => " / " %>
-  </ol>
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
-  <%= yield %>
-</div>
-</body>
-</html>
+  <% if logged_in? %>
+    <form class="form-inline">
+      <%= link_to logout_path, method: :delete do %>
+        <button type="submit" class="btn btn-outline-secondary sign-out">Sign out</button>
+        <% end %>
+        <div class="navbar-text"><i class="far fa-user"></i><%= @current_user.name %></div>
+      <% else %>
+        <button type="submit" class="btn btn-outline-secondary sign-out" onclick="location.href=' <%= login_path %> '">Log
+          in
+        </button>
+      <% end %>
+    </form>
+    </nav>
+    <div class="container">
+      <ol class="breadcrumb">
+        <%= render_breadcrumbs :separator => " / " %>
+      </ol>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+    </body>
+    </html>

@@ -46,3 +46,25 @@ nav {
 .showTodo {
   width: 90%;
 }
+
+#editButton {
+  float: right;
+}
+
+.fa-window-close {
+  color: black;
+  font-size: 1.3em;
+}
+
+.fa-user {
+  font-size: 1.4em;
+  margin-right: 10px;
+}
+
+.col-md-offset-3 label {
+  margin-top: 2%;
+}
+
+.sign-out {
+  margin-right: 10px;
+}

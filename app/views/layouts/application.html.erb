@@ -11,22 +11,29 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-light">
   <a class="navbar-brand" href="#">Todo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href=" <%= todos_path %> ">List<span class="sr-only">(current)</span></a>
+  <% if logged_in? %>
+    <form class="form-inline">
+      <%= link_to logout_path, method: :delete do %>
+        <button type="submit" class="btn btn-outline-secondary sign-out">Sign out</button>
+        <% end %>
+        <div class="navbar-text"><i class="far fa-user"></i><%= @current_user %></div>
+      <% else %>
+        <button type="submit" class="btn btn-outline-secondary sign-out" onclick="location.href=' <%= login_path %> '">Log
+          in
+        </button>
+      <% end %>
+    </form>
+    </nav>
+    <div class="container">
+      <ol class="breadcrumb">
+        <%= render_breadcrumbs :separator => " / " %>
+      </ol>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
     </div>
-  </div>
-</nav>
-<div class="container">
-  <ol class="breadcrumb">
-    <%= render_breadcrumbs :separator => " / " %>
-  </ol>
-  <%= yield %>
-</div>
-</body>
-</html>
+    </body>
+    </html>

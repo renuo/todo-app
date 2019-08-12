@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  add_breadcrumb "Home&nbsp;".html_safe, :todos_path
+  add_breadcrumb "Todos&nbsp;".html_safe, :todos_path
 
   def index
     @todos = Todo.all

@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   add_breadcrumb "Todos&nbsp;".html_safe, :todos_path
 
   def index
-    @todos = Todo.all
+    @todos = @current_user.todos
   end
 
   def show
@@ -21,7 +21,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_user.todos.new(todo_params)
 
     if @todo.save
       redirect_to @todo

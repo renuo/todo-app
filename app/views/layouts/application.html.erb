@@ -12,7 +12,7 @@
 
 <body>
 <nav class="navbar navbar-light">
-  <a class="navbar-brand" href="#">Todo</a>
+  <a class="navbar-brand" href="<%= todos_path %>">Todo</a>
   <% if logged_in? %>
     <form class="form-inline">
       <%= link_to logout_path, method: :delete do %>

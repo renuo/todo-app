@@ -12,13 +12,13 @@
 
 <body>
 <nav class="navbar navbar-light">
-  <a class="navbar-brand" href="#">Todo</a>
+  <a class="navbar-brand" href="<%= todos_path %>">Todo</a>
   <% if logged_in? %>
     <form class="form-inline">
       <%= link_to logout_path, method: :delete do %>
         <button type="submit" class="btn btn-outline-secondary sign-out">Sign out</button>
         <% end %>
-        <div class="navbar-text"><i class="far fa-user"></i><%= @current_user %></div>
+        <div class="navbar-text"><i class="far fa-user"></i><%= @current_user.name %></div>
       <% else %>
         <button type="submit" class="btn btn-outline-secondary sign-out" onclick="location.href=' <%= login_path %> '">Log
           in

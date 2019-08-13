@@ -18,7 +18,9 @@
       <%= link_to logout_path, method: :delete do %>
         <button type="submit" class="btn btn-outline-secondary sign-out">Sign out</button>
         <% end %>
-        <div class="navbar-text"><i class="far fa-user"></i><%= @current_user.name %></div>
+        <div class="navbar-text">
+          <%= gravatar_for @current_user %>
+          <%= @current_user.name %></div>
       <% else %>
         <button type="submit" class="btn btn-outline-secondary sign-out" onclick="location.href=' <%= login_path %> '">Log
           in

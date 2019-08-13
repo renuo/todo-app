@@ -7,6 +7,12 @@ class TodosController < ApplicationController
 
   def show
     @todo = Todo.find(params[:id])
+
+    if current_user.id != @todo.user_id
+      redirect_to todos_path
+      flash[:danger] = "Sorry, but you are only allowed to view your own todos."
+    end
+
     add_breadcrumb "Description", :todo_path
   end
 
@@ -48,6 +54,7 @@ class TodosController < ApplicationController
   end
 
   private
+
   def todo_params
     params.require(:todo).permit(:title, :description)
   end

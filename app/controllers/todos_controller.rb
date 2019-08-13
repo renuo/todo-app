@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   add_breadcrumb "Todos&nbsp;".html_safe, :todos_path
 
   def index
-    @todos = @current_user.todos
+    @todos = current_user.todos
   end
 
   def show

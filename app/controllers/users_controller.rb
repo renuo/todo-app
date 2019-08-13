@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def only_see_own_page
     if current_user.id != params[:id]
-      redirect_to root_path
+      redirect_to todos_path
       flash[:danger] = "Sorry, but you are only allowed to view your own profile page."
     end
   end
